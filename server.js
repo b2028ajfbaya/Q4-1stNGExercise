@@ -24,8 +24,15 @@ app.get("/", (req, res) => {
 
 // Create express route binder for draw.hbs and get the data from the url as parameters
 // that came from index.hbs
+app.get("/draw", (req, res) => {
+  const sideLength = req.query.sideLength;
+  res.render("draw", {sideLength});
+});
 
-
+app.post("/draw", (req, res) => {
+  const sideLength = req.body.sideLength;
+  res.render("draw", {sideLength});
+});
 
 //Makes the app listen to port 3000
 app.listen(port, () => console.log(`App listening to port ${port}`));
